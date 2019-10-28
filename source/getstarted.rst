@@ -6,12 +6,12 @@ Base URL
 `````````````````
 All REST APIs in the documentation have the following base URL:
 
-    http(s)://host:8080/api/
+    https://api.iblockapi.com/
 
 Basic Authentication
 ``````````````````````
-The HTTP requests to the REST API are protected with HTTP Basic authentication. You can create an application in Dashboard, using appid and appsecret to authenticate.  For example:
+The HTTP requests to the REST API are protected with authentication. You can create an application in Dashboard, using apiKey to authenticate.  For example:
 
 .. code-block:: bash
 
-    curl -v --basic -u <appsecret> -k http://localhost:8080
+    curl  https://api.iblockapi.com?apiKey="Your APIKey"
