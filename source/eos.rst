@@ -380,7 +380,7 @@ Response:
   }
 }
 
-get_code
+get_currency_balance
 `````````````````
 Returns an object containing rows from the specified table.
 
