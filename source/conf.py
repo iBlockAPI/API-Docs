@@ -17,9 +17,9 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'BlockChainApi-docs-en'
+project = 'iBlockAPI-Docs-EN'
 copyright = '2019'
-author = ''
+author = 'iBlockAPI'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
