@@ -1,9 +1,5 @@
 Zcash API Docs
 ===========
-Zcash is a privacy-protecting, digital currency built on strong science. `Official website`_.
-
-.. _Official website: https://z.cash/
-
 
 getbestblockhash
 `````````````````
