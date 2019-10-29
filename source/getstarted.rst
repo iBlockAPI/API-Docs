@@ -10,7 +10,7 @@ All REST APIs in the documentation have the following base URL:
 
 Basic Authentication
 ``````````````````````
-The HTTP requests to the REST API are protected with authentication. You can create an application in Dashboard, using apiKey to authenticate.  For example:
+The HTTP requests to the REST API are protected with authentication. You can apply for APIKey in Dashboard, using apiKey to authenticate.  For example:
 
 .. code-block:: bash
 
