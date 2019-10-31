@@ -452,15 +452,6 @@ getFeeEstimate
 ```````````
 Gives an estimation on fees per byte
 
-Return:
-
-.. code-block:: json
-
- {
-    fee - unsigned int; Amount of fees estimated per byte in atomic units
-    quantization_mask - unsigned int; Final fee should be rounded up to an even multiple of this value
- }
-
 Definition::
 
     GET /xmr/getFeeEstimate
@@ -488,6 +479,15 @@ Response:
   }
  }
 
+
+Return:
+
+.. code-block:: json
+
+ {
+    fee - unsigned int; Amount of fees estimated per byte in atomic units
+    quantization_mask - unsigned int; Final fee should be rounded up to an even multiple of this value
+ }
 
 
 getHeight
@@ -593,13 +593,6 @@ getAltBlocksHashes
 ```````````
 Get the known blocks hashes which are not on the main chain
 
-Return:
-
-.. code-block:: json
-
- {
-   blks_hashes - array of strings; list of alternative blocks hashes to main chain
- }
 
 Definition::
 
@@ -637,18 +630,19 @@ Response:
   }
  }
 
-
-isKeyImageSpent
-```````````
-Check if outputs have been spent using the key image associated with the output
-
 Return:
 
 .. code-block:: json
 
  {
-  spent_status - unsigned int list; List of statuses for each image checked. Statuses are follows: 0 = unspent, 1 = spent in blockchain, 2 = spent in transaction pool
+   blks_hashes - array of strings; list of alternative blocks hashes to main chain
  }
+
+
+
+isKeyImageSpent
+```````````
+Check if outputs have been spent using the key image associated with the output
 
 Definition::
 
@@ -668,6 +662,14 @@ Response:
     "untrusted": false,
     "status": "OK"
   }
+ }
+
+Return:
+
+.. code-block:: json
+
+ {
+  spent_status - unsigned int list; List of statuses for each image checked. Statuses are follows: 0 = unspent, 1 = spent in blockchain, 2 = spent in transaction pool
  }
 
 
