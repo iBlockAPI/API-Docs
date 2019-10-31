@@ -1,6 +1,6 @@
 Bitcoin API Docs
 ===========
-getbestblockhash
+getBestBlockHash
 ```````````
 Returns the hash of the best (tip) block in the longest block chain.
 
@@ -25,35 +25,6 @@ Response:
 getBlockByHash
 ```````````
 Get the block of the specified hash according to the block hash
-
-Return:
-
-.. code-block:: json
-
- {
-    "hash" : "hash",     (string) the block hash (same as provided)
-    "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
-    "size" : n,            (numeric) The block size
-    "strippedsize" : n,    (numeric) The block size excluding witness data
-    "weight" : n           (numeric) The block weight as defined in BIP 141
-    "height" : n,          (numeric) The block height or index
-    "version" : n,         (numeric) The block version
-    "versionHex" : "00000000", (string) The block version formatted in hexadecimal
-    "merkleroot" : "xxxx", (string) The merkle root
-    "tx" : [               (array of string) The transaction ids
-        "transactionid"     (string) The transaction id
-        ,...
-    ],
-    "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
-    "mediantime" : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
-    "nonce" : n,           (numeric) The nonce
-    "bits" : "1d00ffff", (string) The bits
-    "difficulty" : x.xxx,  (numeric) The difficulty
-    "chainwork" : "xxxx",  (string) Expected number of hashes required to produce the chain up to this block (in hex)
-    "nTx" : n,             (numeric) The number of transactions in the block.
-    "previousblockhash" : "hash",  (string) The hash of the previous block
-    "nextblockhash" : "hash"       (string) The hash of the next block
- }
 
 Definition::
 
@@ -99,9 +70,6 @@ Response:
     }
  }
 
-getBlockByHeight
-```````````
-Get the block of the specified hash according to the block height
 
 Return:
 
@@ -130,7 +98,11 @@ Return:
     "nTx" : n,             (numeric) The number of transactions in the block.
     "previousblockhash" : "hash",  (string) The hash of the previous block
     "nextblockhash" : "hash"       (string) The hash of the next block
-    }
+ }
+
+getBlockByHeight
+```````````
+Get the block of the specified hash according to the block height
 
 Definition::
 
@@ -177,56 +149,40 @@ Response:
     }
  }
 
-getBlockChainInfo
-```````````
-Returns an object containing various state info regarding blockchain processing
+
 
 Return:
 
 .. code-block:: json
 
  {
-    "chain": "xxxx",              (string) current network name as defined in BIP70 (main, test, regtest)
-    "blocks": xxxxxx,             (numeric) the current number of blocks processed in the server
-    "headers": xxxxxx,            (numeric) the current number of headers we have validated
-    "bestblockhash": "...",       (string) the hash of the currently best block
-    "difficulty": xxxxxx,         (numeric) the current difficulty
-    "mediantime": xxxxxx,         (numeric) median time for the current best block
-    "verificationprogress": xxxx, (numeric) estimate of verification progress [0..1]
-    "initialblockdownload": xxxx, (bool) (debug information) estimate of whether this node is in Initial Block Download mode.
-    "chainwork": "xxxx"           (string) total amount of work in active chain, in hexadecimal
-    "size_on_disk": xxxxxx,       (numeric) the estimated size of the block and undo files on disk
-    "pruned": xx,                 (boolean) if the blocks are subject to pruning
-    "pruneheight": xxxxxx,        (numeric) lowest-height complete block stored (only present if pruning is enabled)
-    "automatic_pruning": xx,      (boolean) whether automatic pruning is enabled (only present if pruning is enabled)
-    "prune_target_size": xxxxxx,  (numeric) the target size used by pruning (only present if automatic pruning is enabled)
-    "softforks": [                (array) status of softforks in progress
-        {
-            "id": "xxxx",           (string) name of softfork
-            "version": xx,          (numeric) block version
-            "reject": {             (object) progress toward rejecting pre-softfork blocks
-            "status": xx,        (boolean) true if threshold reached
-            },
-        }, ...
+    "hash" : "hash",     (string) the block hash (same as provided)
+    "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
+    "size" : n,            (numeric) The block size
+    "strippedsize" : n,    (numeric) The block size excluding witness data
+    "weight" : n           (numeric) The block weight as defined in BIP 141
+    "height" : n,          (numeric) The block height or index
+    "version" : n,         (numeric) The block version
+    "versionHex" : "00000000", (string) The block version formatted in hexadecimal
+    "merkleroot" : "xxxx", (string) The merkle root
+    "tx" : [               (array of string) The transaction ids
+        "transactionid"     (string) The transaction id
+        ,...
     ],
-    "bip9_softforks": {           (object) status of BIP9 softforks in progress
-        "xxxx" : {                 (string) name of the softfork
-            "status": "xxxx",       (string) one of "defined", "started", "locked_in", "active", "failed"
-            "bit": xx,              (numeric) the bit (0-28) in the block version field used to signal this softfork (only for "started" status)
-            "startTime": xx,        (numeric) the minimum median time past of a block at which the bit gains its meaning
-            "timeout": xx,          (numeric) the median time past of a block at which the deployment is considered failed if not yet locked in
-            "since": xx,            (numeric) height of the first block to which the status applies
-            "statistics": {         (object) numeric statistics about BIP9 signalling for a softfork (only for "started" status)
-            "period": xx,        (numeric) the length in blocks of the BIP9 signalling period
-            "threshold": xx,     (numeric) the number of blocks with the version bit set required to activate the feature
-            "elapsed": xx,       (numeric) the number of blocks elapsed since the beginning of the current period
-            "count": xx,         (numeric) the number of blocks with the version bit set in the current period
-            "possible": xx       (boolean) returns false if there are not enough blocks left in this period to pass activation threshold
-            }
-        }
+    "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
+    "mediantime" : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
+    "nonce" : n,           (numeric) The nonce
+    "bits" : "1d00ffff", (string) The bits
+    "difficulty" : x.xxx,  (numeric) The difficulty
+    "chainwork" : "xxxx",  (string) Expected number of hashes required to produce the chain up to this block (in hex)
+    "nTx" : n,             (numeric) The number of transactions in the block.
+    "previousblockhash" : "hash",  (string) The hash of the previous block
+    "nextblockhash" : "hash"       (string) The hash of the next block
     }
-    "warnings" : "...",           (string) any network and blockchain warnings.
- }
+
+getBlockChainInfo
+```````````
+Returns an object containing various state info regarding blockchain processing
 
 Definition::
 
@@ -297,6 +253,52 @@ Response:
     }
  }
 
+Return:
+
+.. code-block:: json
+
+ {
+    "chain": "xxxx",              (string) current network name as defined in BIP70 (main, test, regtest)
+    "blocks": xxxxxx,             (numeric) the current number of blocks processed in the server
+    "headers": xxxxxx,            (numeric) the current number of headers we have validated
+    "bestblockhash": "...",       (string) the hash of the currently best block
+    "difficulty": xxxxxx,         (numeric) the current difficulty
+    "mediantime": xxxxxx,         (numeric) median time for the current best block
+    "verificationprogress": xxxx, (numeric) estimate of verification progress [0..1]
+    "initialblockdownload": xxxx, (bool) (debug information) estimate of whether this node is in Initial Block Download mode.
+    "chainwork": "xxxx"           (string) total amount of work in active chain, in hexadecimal
+    "size_on_disk": xxxxxx,       (numeric) the estimated size of the block and undo files on disk
+    "pruned": xx,                 (boolean) if the blocks are subject to pruning
+    "pruneheight": xxxxxx,        (numeric) lowest-height complete block stored (only present if pruning is enabled)
+    "automatic_pruning": xx,      (boolean) whether automatic pruning is enabled (only present if pruning is enabled)
+    "prune_target_size": xxxxxx,  (numeric) the target size used by pruning (only present if automatic pruning is enabled)
+    "softforks": [                (array) status of softforks in progress
+        {
+            "id": "xxxx",           (string) name of softfork
+            "version": xx,          (numeric) block version
+            "reject": {             (object) progress toward rejecting pre-softfork blocks
+            "status": xx,        (boolean) true if threshold reached
+            },
+        }, ...
+    ],
+    "bip9_softforks": {           (object) status of BIP9 softforks in progress
+        "xxxx" : {                 (string) name of the softfork
+            "status": "xxxx",       (string) one of "defined", "started", "locked_in", "active", "failed"
+            "bit": xx,              (numeric) the bit (0-28) in the block version field used to signal this softfork (only for "started" status)
+            "startTime": xx,        (numeric) the minimum median time past of a block at which the bit gains its meaning
+            "timeout": xx,          (numeric) the median time past of a block at which the deployment is considered failed if not yet locked in
+            "since": xx,            (numeric) height of the first block to which the status applies
+            "statistics": {         (object) numeric statistics about BIP9 signalling for a softfork (only for "started" status)
+            "period": xx,        (numeric) the length in blocks of the BIP9 signalling period
+            "threshold": xx,     (numeric) the number of blocks with the version bit set required to activate the feature
+            "elapsed": xx,       (numeric) the number of blocks elapsed since the beginning of the current period
+            "count": xx,         (numeric) the number of blocks with the version bit set in the current period
+            "possible": xx       (boolean) returns false if there are not enough blocks left in this period to pass activation threshold
+            }
+        }
+    }
+    "warnings" : "...",           (string) any network and blockchain warnings.
+ }
 
 
 getBlockCount
@@ -406,26 +408,6 @@ Params:
 
 3."unconfirmed"  (boolean, optional) Whether to include the mempool. Default: false.     Note that an unspent output that is spent in the mempool won't appear.
 
-Result:
-
-.. code-block:: json
-
- {
-  "bestblock":  "hash",    (string) The hash of the block at the tip of the chain
-  "confirmations" : n,       (numeric) The number of confirmations
-  "value" : x.xxx,           (numeric) The transaction value in BTC
-  "scriptPubKey" : {         (json object)
-     "asm" : "code",       (string)
-     "hex" : "hex",        (string)
-     "reqSigs" : n,          (numeric) Number of required signatures
-     "type" : "pubkeyhash", (string) The type, eg pubkeyhash
-     "addresses" : [          (array of string) array of bitcoin addresses
-        "address"     (string) bitcoin address
-        ,...
-     ]
-  },
-  "coinbase" : true|false   (boolean) Coinbase or not
- }
 
 Definition::
 
@@ -459,26 +441,33 @@ Response:
         }
     }
  }
-            
-
-getTxOutSetInfo
-```````````
-Returns statistics about the unspent transaction output set,Note this call may take some time
 
 Result:
 
 .. code-block:: json
 
  {
-    "height":n,     (numeric) The current block height (index)
-    "bestblock": "hex",   (string) The hash of the block at the tip of the chain
-    "transactions": n,      (numeric) The number of transactions with unspent outputs
-    "txouts": n,            (numeric) The number of unspent transaction outputs
-    "bogosize": n,          (numeric) A meaningless metric for UTXO set size
-    "hash_serialized_2": "hash", (string) The serialized hash
-    "disk_size": n,         (numeric) The estimated size of the chainstate on disk
-    "total_amount": x.xxx          (numeric) The total amount
-  }
+  "bestblock":  "hash",    (string) The hash of the block at the tip of the chain
+  "confirmations" : n,       (numeric) The number of confirmations
+  "value" : x.xxx,           (numeric) The transaction value in BTC
+  "scriptPubKey" : {         (json object)
+     "asm" : "code",       (string)
+     "hex" : "hex",        (string)
+     "reqSigs" : n,          (numeric) Number of required signatures
+     "type" : "pubkeyhash", (string) The type, eg pubkeyhash
+     "addresses" : [          (array of string) array of bitcoin addresses
+        "address"     (string) bitcoin address
+        ,...
+     ]
+  },
+  "coinbase" : true|false   (boolean) Coinbase or not
+ }
+            
+
+getTxOutSetInfo
+```````````
+Returns statistics about the unspent transaction output set,Note this call may take some time
+
 
 Definition::
 
@@ -507,6 +496,21 @@ Response:
     }
   }
  }
+
+Result:
+
+.. code-block:: json
+
+ {
+    "height":n,     (numeric) The current block height (index)
+    "bestblock": "hex",   (string) The hash of the block at the tip of the chain
+    "transactions": n,      (numeric) The number of transactions with unspent outputs
+    "txouts": n,            (numeric) The number of unspent transaction outputs
+    "bogosize": n,          (numeric) A meaningless metric for UTXO set size
+    "hash_serialized_2": "hash", (string) The serialized hash
+    "disk_size": n,         (numeric) The estimated size of the chainstate on disk
+    "total_amount": x.xxx          (numeric) The total amount
+  }
 
 
 verifyChain
@@ -573,14 +577,6 @@ Params
 
 2. "keys"                       (string, required) A json array of hex-encoded public keys
 
-Result:
-
-.. code-block:: json
-
- {
-    "address":"multisigaddress",  (string) The value of the new multisig address
-    "redeemScript":"script"       (string) The string value of the hex-encoded redemption script
-  }
 
 Definition::
 
@@ -604,7 +600,14 @@ Response:
   }
  }
 
- 
+Result:
+
+.. code-block:: json
+
+ {
+    "address":"multisigaddress",  (string) The value of the new multisig address
+    "redeemScript":"script"       (string) The string value of the hex-encoded redemption script
+  }
 
 
 estimateSmartFee
@@ -613,16 +616,6 @@ Estimates the approximate fee per kilobyte needed for a transaction to begin
 confirmation within conf_target blocks if possible and return the number of blocks
 for which the estimate is valid. Uses virtual transaction size as defined
 in BIP 141 (witness data is discounted)
-
-Result:
-
-.. code-block:: json
-
- {
-    "feerate" : x.x,     (numeric, optional) estimate fee rate in BTC/kB
-    "errors": [ str... ] (json array of strings, optional) Errors encountered during processing
-    "blocks" : n         (numeric) block number where estimate was found
-  }
 
 Definition::
 
@@ -646,6 +639,16 @@ Response:
   }
  }
 
+
+Result:
+
+.. code-block:: json
+
+ {
+    "feerate" : x.x,     (numeric, optional) estimate fee rate in BTC/kB
+    "errors": [ str... ] (json array of strings, optional) Errors encountered during processing
+    "blocks" : n         (numeric) block number where estimate was found
+  }
 
 
 validateAddress
@@ -706,56 +709,6 @@ Response:
 queryTransactionInfo
 ```````````
 Query transaction information according to txid
-
-Return:
-
-.. code-block:: json
-
- {
-    "in_active_chain": b, (bool) Whether specified block is in the active chain or not (only present with explicit "blockhash" argument)
-    "hex" : "data",       (string) The serialized, hex-encoded data for 'txid'
-    "txid" : "id",        (string) The transaction id (same as provided)
-    "hash" : "id",        (string) The transaction hash (differs from txid for witness transactions)
-    "size" : n,             (numeric) The serialized transaction size
-    "vsize" : n,            (numeric) The virtual transaction size (differs from size for witness transactions)
-    "weight" : n,           (numeric) The transaction's weight (between vsize*4-3 and vsize*4)
-    "version" : n,          (numeric) The version
-    "locktime" : ttt,       (numeric) The lock time
-    "vin" : [               (array of json objects)
-        {
-        "txid": "id",    (string) The transaction id
-        "vout": n,         (numeric)
-        "scriptSig": {     (json object) The script
-            "asm": "asm",  (string) asm
-            "hex": "hex"   (string) hex
-        },
-        "sequence": n      (numeric) The script sequence number
-        "txinwitness": ["hex", ...] (array of string) hex-encoded witness data (if any)
-        }
-        ,...
-    ],
-    "vout" : [              (array of json objects)
-        {
-        "value" : x.xxx,            (numeric) The value in BTC
-        "n" : n,                    (numeric) index
-        "scriptPubKey" : {          (json object)
-            "asm" : "asm",          (string) the asm
-            "hex" : "hex",          (string) the hex
-            "reqSigs" : n,            (numeric) The required sigs
-            "type" : "pubkeyhash",  (string) The type, eg 'pubkeyhash'
-            "addresses" : [           (json array of string)
-            "address"        (string) bitcoin address
-            ,...
-            ]
-        }
-        }
-        ,...
-    ],
-    "blockhash" : "hash",   (string) the block hash
-    "confirmations" : n,      (numeric) The confirmations
-    "time" : ttt,             (numeric) The transaction time in seconds since epoch (Jan 1 1970 GMT)
-    "blocktime" : ttt         (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
- }
 
 Definition::
 
@@ -829,6 +782,57 @@ Response:
       "blocktime": 1571212116
     }
   }
+ }
+
+
+Return:
+
+.. code-block:: json
+
+ {
+    "in_active_chain": b, (bool) Whether specified block is in the active chain or not (only present with explicit "blockhash" argument)
+    "hex" : "data",       (string) The serialized, hex-encoded data for 'txid'
+    "txid" : "id",        (string) The transaction id (same as provided)
+    "hash" : "id",        (string) The transaction hash (differs from txid for witness transactions)
+    "size" : n,             (numeric) The serialized transaction size
+    "vsize" : n,            (numeric) The virtual transaction size (differs from size for witness transactions)
+    "weight" : n,           (numeric) The transaction's weight (between vsize*4-3 and vsize*4)
+    "version" : n,          (numeric) The version
+    "locktime" : ttt,       (numeric) The lock time
+    "vin" : [               (array of json objects)
+        {
+        "txid": "id",    (string) The transaction id
+        "vout": n,         (numeric)
+        "scriptSig": {     (json object) The script
+            "asm": "asm",  (string) asm
+            "hex": "hex"   (string) hex
+        },
+        "sequence": n      (numeric) The script sequence number
+        "txinwitness": ["hex", ...] (array of string) hex-encoded witness data (if any)
+        }
+        ,...
+    ],
+    "vout" : [              (array of json objects)
+        {
+        "value" : x.xxx,            (numeric) The value in BTC
+        "n" : n,                    (numeric) index
+        "scriptPubKey" : {          (json object)
+            "asm" : "asm",          (string) the asm
+            "hex" : "hex",          (string) the hex
+            "reqSigs" : n,            (numeric) The required sigs
+            "type" : "pubkeyhash",  (string) The type, eg 'pubkeyhash'
+            "addresses" : [           (json array of string)
+            "address"        (string) bitcoin address
+            ,...
+            ]
+        }
+        }
+        ,...
+    ],
+    "blockhash" : "hash",   (string) the block hash
+    "confirmations" : n,      (numeric) The confirmations
+    "time" : ttt,             (numeric) The transaction time in seconds since epoch (Jan 1 1970 GMT)
+    "blocktime" : ttt         (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
  }
  
 

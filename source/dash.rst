@@ -1,6 +1,6 @@
 DASH API Docs
 ===========
-getbestblockhash
+getBestBlockHash
 ```````````
 Returns the hash of the best (tip) block in the longest block chain.
 
@@ -25,33 +25,6 @@ Response:
 getBlockByHash
 ```````````
 Get the block of the specified hash according to the block hash
-
-Return:
-
-.. code-block:: json
-
- {
-    "hash" : "hash",     (string) the block hash (same as provided)
-    "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
-    "size" : n,            (numeric) The block size
-    "height" : n,          (numeric) The block height or index
-    "version" : n,         (numeric) The block version
-    "versionHex" : "00000000", (string) The block version formatted in hexadecimal
-    "merkleroot" : "xxxx", (string) The merkle root
-    "tx" : [               (array of string) The transaction ids
-        "transactionid"     (string) The transaction id
-        ,...
-    ],
-    "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
-    "mediantime" : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
-    "nonce" : n,           (numeric) The nonce
-    "bits" : "1d00ffff", (string) The bits
-    "difficulty" : x.xxx,  (numeric) The difficulty
-    "chainwork" : "xxxx",  (string) Expected number of hashes required to produce the chain up to this block (in hex)
-    "nTx" : n,             (numeric) The number of transactions in the block.
-    "previousblockhash" : "hash",  (string) The hash of the previous block
-    "nextblockhash" : "hash"       (string) The hash of the next block
- }
 
 Definition::
 
@@ -107,9 +80,6 @@ Response:
     }
  }
 
-getBlockByHeight
-```````````
-Get the block of the specified hash according to the block height
 
 Return:
 
@@ -136,7 +106,11 @@ Return:
     "nTx" : n,             (numeric) The number of transactions in the block.
     "previousblockhash" : "hash",  (string) The hash of the previous block
     "nextblockhash" : "hash"       (string) The hash of the next block
-    }
+ }
+
+getBlockByHeight
+```````````
+Get the block of the specified hash according to the block height
 
 Definition::
 
@@ -191,49 +165,38 @@ Response:
   }
  }
 
-getBlockChainInfo
-```````````
-Returns an object containing various state info regarding blockchain processing
 
 Return:
 
 .. code-block:: json
 
  {
-    "chain": "xxxx",        (string) current network name as defined in BIP70 (main, test, regtest)
-    "blocks": xxxxxx,         (numeric) the current number of blocks processed in the server
-    "headers": xxxxxx,        (numeric) the current number of headers we have validated
-    "bestblockhash": "...", (string) the hash of the currently best block
-    "difficulty": xxxxxx,     (numeric) the current difficulty
-    "mediantime": xxxxxx,     (numeric) median time for the current best block
-    "verificationprogress": xxxx, (numeric) estimate of verification progress [0..1]
-    "chainwork": "xxxx"     (string) total amount of work in active chain, in hexadecimal
-    "pruned": xx,             (boolean) if the blocks are subject to pruning
-    "pruneheight": xxxxxx,    (numeric) lowest-height complete block stored
-    "softforks": [            (array) status of softforks in progress
-        {
-            "id": "xxxx",        (string) name of softfork
-            "version": xx,         (numeric) block version
-            "reject": {            (object) progress toward rejecting pre-softfork blocks
-            "status": xx,       (boolean) true if threshold reached
-            },
-        }, ...
+    "hash" : "hash",     (string) the block hash (same as provided)
+    "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
+    "size" : n,            (numeric) The block size
+    "height" : n,          (numeric) The block height or index
+    "version" : n,         (numeric) The block version
+    "versionHex" : "00000000", (string) The block version formatted in hexadecimal
+    "merkleroot" : "xxxx", (string) The merkle root
+    "tx" : [               (array of string) The transaction ids
+        "transactionid"     (string) The transaction id
+        ,...
     ],
-    "bip9_softforks": {          (object) status of BIP9 softforks in progress
-        "xxxx" : {                (string) name of the softfork
-            "status": "xxxx",    (string) one of "defined", "started", "locked_in", "active", "failed"
-            "bit": xx,             (numeric) the bit (0-28) in the block version field used to signal this softfork (only for "started" status)
-            "period": xx,          (numeric) the window size/period for this softfork (only for "started" status)
-            "threshold": xx,       (numeric) the threshold for this softfork (only for "started" status)
-            "windowStart": xx,     (numeric) the starting block height of the current window (only for "started" status)
-            "windowBlocks": xx,    (numeric) the number of blocks in the current window that had the version bit set for this softfork (only for "started" status)
-            "windowProgress": xx,  (numeric) the progress (between 0 and 1) for activation of this softfork (only for "started" status)
-            "startTime": xx,       (numeric) the minimum median time past of a block at which the bit gains its meaning
-            "timeout": xx,         (numeric) the median time past of a block at which the deployment is considered failed if not yet locked in
-            "since": xx            (numeric) height of the first block to which the status applies
-        }
+    "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
+    "mediantime" : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
+    "nonce" : n,           (numeric) The nonce
+    "bits" : "1d00ffff", (string) The bits
+    "difficulty" : x.xxx,  (numeric) The difficulty
+    "chainwork" : "xxxx",  (string) Expected number of hashes required to produce the chain up to this block (in hex)
+    "nTx" : n,             (numeric) The number of transactions in the block.
+    "previousblockhash" : "hash",  (string) The hash of the previous block
+    "nextblockhash" : "hash"       (string) The hash of the next block
     }
- }
+
+
+getBlockChainInfo
+```````````
+Returns an object containing various state info regarding blockchain processing
 
 Definition::
 
@@ -319,6 +282,46 @@ Response:
     }
  }
 
+
+Return:
+
+.. code-block:: json
+
+ {
+    "chain": "xxxx",        (string) current network name as defined in BIP70 (main, test, regtest)
+    "blocks": xxxxxx,         (numeric) the current number of blocks processed in the server
+    "headers": xxxxxx,        (numeric) the current number of headers we have validated
+    "bestblockhash": "...", (string) the hash of the currently best block
+    "difficulty": xxxxxx,     (numeric) the current difficulty
+    "mediantime": xxxxxx,     (numeric) median time for the current best block
+    "verificationprogress": xxxx, (numeric) estimate of verification progress [0..1]
+    "chainwork": "xxxx"     (string) total amount of work in active chain, in hexadecimal
+    "pruned": xx,             (boolean) if the blocks are subject to pruning
+    "pruneheight": xxxxxx,    (numeric) lowest-height complete block stored
+    "softforks": [            (array) status of softforks in progress
+        {
+            "id": "xxxx",        (string) name of softfork
+            "version": xx,         (numeric) block version
+            "reject": {            (object) progress toward rejecting pre-softfork blocks
+            "status": xx,       (boolean) true if threshold reached
+            },
+        }, ...
+    ],
+    "bip9_softforks": {          (object) status of BIP9 softforks in progress
+        "xxxx" : {                (string) name of the softfork
+            "status": "xxxx",    (string) one of "defined", "started", "locked_in", "active", "failed"
+            "bit": xx,             (numeric) the bit (0-28) in the block version field used to signal this softfork (only for "started" status)
+            "period": xx,          (numeric) the window size/period for this softfork (only for "started" status)
+            "threshold": xx,       (numeric) the threshold for this softfork (only for "started" status)
+            "windowStart": xx,     (numeric) the starting block height of the current window (only for "started" status)
+            "windowBlocks": xx,    (numeric) the number of blocks in the current window that had the version bit set for this softfork (only for "started" status)
+            "windowProgress": xx,  (numeric) the progress (between 0 and 1) for activation of this softfork (only for "started" status)
+            "startTime": xx,       (numeric) the minimum median time past of a block at which the bit gains its meaning
+            "timeout": xx,         (numeric) the median time past of a block at which the deployment is considered failed if not yet locked in
+            "since": xx            (numeric) height of the first block to which the status applies
+        }
+    }
+ }
 
 
 getBlockCount
@@ -426,27 +429,6 @@ Params:
 
 3."unconfirmed"  (boolean, optional) Whether to include the mempool. Default: false.     Note that an unspent output that is spent in the mempool won't appear.
 
-Result:
-
-.. code-block:: json
-
- {
-  "bestblock":  "hash",    (string) The hash of the block at the tip of the chain
-  "confirmations" : n,       (numeric) The number of confirmations
-  "value" : x.xxx,           (numeric) The transaction value in DASH
-  "scriptPubKey" : {         (json object)
-     "asm" : "code",       (string)
-     "hex" : "hex",        (string)
-     "reqSigs" : n,          (numeric) Number of required signatures
-     "type" : "pubkeyhash", (string) The type, eg pubkeyhash
-     "addresses" : [          (array of string) array of bitcoin addresses
-        "address"     (string) bitcoin address
-        ,...
-     ]
-  },
-  "version" : n,            (numeric) The version
-  "coinbase" : true|false   (boolean) Coinbase or not
- }
 
 Definition::
 
@@ -480,26 +462,35 @@ Response:
         }
     }
  }
-            
 
-getTxOutSetInfo
-```````````
-Returns statistics about the unspent transaction output set,Note this call may take some time
 
 Result:
 
 .. code-block:: json
 
  {
-    "height":n,     (numeric) The current block height (index)
-    "bestblock": "hex",   (string) The hash of the block at the tip of the chain
-    "transactions": n,      (numeric) The number of transactions with unspent outputs
-    "txouts": n,            (numeric) The number of unspent transaction outputs
-    "bogosize": n,          (numeric) A meaningless metric for UTXO set size
-    "hash_serialized_2": "hash", (string) The serialized hash
-    "disk_size": n,         (numeric) The estimated size of the chainstate on disk
-    "total_amount": x.xxx          (numeric) The total amount
-  }
+  "bestblock":  "hash",    (string) The hash of the block at the tip of the chain
+  "confirmations" : n,       (numeric) The number of confirmations
+  "value" : x.xxx,           (numeric) The transaction value in DASH
+  "scriptPubKey" : {         (json object)
+     "asm" : "code",       (string)
+     "hex" : "hex",        (string)
+     "reqSigs" : n,          (numeric) Number of required signatures
+     "type" : "pubkeyhash", (string) The type, eg pubkeyhash
+     "addresses" : [          (array of string) array of bitcoin addresses
+        "address"     (string) bitcoin address
+        ,...
+     ]
+  },
+  "version" : n,            (numeric) The version
+  "coinbase" : true|false   (boolean) Coinbase or not
+ }
+            
+
+getTxOutSetInfo
+```````````
+Returns statistics about the unspent transaction output set,Note this call may take some time
+
 
 Definition::
 
@@ -528,6 +519,21 @@ Response:
     }
  }
 
+
+Result:
+
+.. code-block:: json
+
+ {
+    "height":n,     (numeric) The current block height (index)
+    "bestblock": "hex",   (string) The hash of the block at the tip of the chain
+    "transactions": n,      (numeric) The number of transactions with unspent outputs
+    "txouts": n,            (numeric) The number of unspent transaction outputs
+    "bogosize": n,          (numeric) A meaningless metric for UTXO set size
+    "hash_serialized_2": "hash", (string) The serialized hash
+    "disk_size": n,         (numeric) The estimated size of the chainstate on disk
+    "total_amount": x.xxx          (numeric) The total amount
+  }
 
 verifyChain
 ```````````
@@ -593,14 +599,6 @@ Params
 
 2. "keys"                       (string, required) A json array of hex-encoded public keys
 
-Result:
-
-.. code-block:: json
-
- {
-    "address":"multisigaddress",  (string) The value of the new multisig address
-    "redeemScript":"script"       (string) The string value of the hex-encoded redemption script
-  }
 
 Definition::
 
@@ -624,6 +622,14 @@ Response:
   }
  }
 
+Result:
+
+.. code-block:: json
+
+ {
+    "address":"multisigaddress",  (string) The value of the new multisig address
+    "redeemScript":"script"       (string) The string value of the hex-encoded redemption script
+  }
  
 
 
@@ -634,15 +640,6 @@ confirmation within conf_target blocks if possible and return the number of bloc
 for which the estimate is valid. Uses virtual transaction size as defined
 in BIP 141 (witness data is discounted)
 
-Result:
-
-.. code-block:: json
-
- {
-    "feerate" : x.x,     (numeric, optional) estimate fee rate in 
-    "errors": [ str... ] (json array of strings, optional) Errors encountered during processing
-    "blocks" : n         (numeric) block number where estimate was found
-  }
 
 Definition::
 
@@ -666,6 +663,15 @@ Response:
   }
  }
 
+Result:
+
+.. code-block:: json
+
+ {
+    "feerate" : x.x,     (numeric, optional) estimate fee rate in 
+    "errors": [ str... ] (json array of strings, optional) Errors encountered during processing
+    "blocks" : n         (numeric) block number where estimate was found
+  }
 
 
 validateAddress
@@ -727,6 +733,59 @@ queryTransactionInfo
 ```````````
 Query transaction information according to txid
 
+Definition::
+
+    GET /dash/queryTransactionInfo?txId={txId}
+Example Request:
+
+    GET /dash/queryTransactionInfo?txId=xxxxxxxxxxxx
+Response:
+
+.. code-block:: json
+
+ {
+    "status": 0,
+    "message": "success",
+    "data": {
+        "m": {
+        "hash": "000000000000002056c37f7d57864341be0cc01b79c7dfb68350abd831bb50d7",
+        "confirmations": 2,
+        "size": 10940,
+        "height": 1158713,
+        "version": 536870912,
+        "versionHex": "20000000",
+        "merkleroot": "a9ea98c84ce1d538c332e65d1db9de65f7cdb80783a0e0121097993073e60bac",
+        "tx": [
+            "11f15873f50e55de555729d76dd3d9189cfda6042a3807bb3a0529f80722dac2",
+            "4bf438829fe339265f704f3eb62f32ca6db78faa6663a58736a9fa750dc4c022",
+            "02a053ca2fcc6c5be98b5701608c6d3ce1f3363ae24cadde189c49293285045d",
+            "14e2099bc5e173aee2e18cfdbc228edb850e1181aec7260668b8416815367835",
+            "ff624e5970c4716d6d1b78b39ae50edc46fe0c66bb6038a6fe5a05dd4791ebdc",
+            "db3c3406a8ec947e21bb56f243e5eb4ffa28adf9be8a6adff06a8cb044d6dca6",
+            "e7b6c39a1a178eb8889cbfab8001dbc167e03b49be2e7fbd8a5320b2d3a61de2",
+            "64aeaacbcbb9fb6842bc80144e19ccbfaa49b7ca1e438c4c35023376a4768a1b",
+            "add2bff452a81710b46cd269d49a21506437c8959409b0f6861664263b19baf8"
+        ],
+        "cbTx": {
+            "version": 2,
+            "height": 1158713,
+            "merkleRootMNList": "2ef31ada7aa72d5f5215fbd978c47f4ee7b68d293ce68d3b1b2a84fcbc777bc9",
+            "merkleRootQuorums": "812ff025ba417a6deb37fc1e0e5f35678665202e09db7e2a31d0b67ce181d187"
+        },
+        "time": 1571814866,
+        "mediantime": 1571814640,
+        "nonce": 3600838889,
+        "bits": "19240c41",
+        "difficulty": 119144408.2195601,
+        "chainwork": "000000000000000000000000000000000000000000001f71b3ca52972d74626f",
+        "previousblockhash": "00000000000000175d2d0a1c8c4b081b745e066d235af284eea184285cc68297",
+        "nextblockhash": "00000000000000074ce217b129e141632aaa9d2b93a400d3137243d361bf4139",
+        "chainlock": true
+        }
+    }
+ }
+
+ 
 Return:
 
 .. code-block:: json
@@ -776,165 +835,6 @@ Return:
     "instantlock_internal" : true|false, (bool) Current internal transaction lock state
     "chainlock" : true|false, (bool) The state of the corresponding block chainlock
  }
-
-Definition::
-
-    GET /dash/queryTransactionInfo?txId={txId}
-Example Request:
-
-    GET /dash/queryTransactionInfo?txId=xxxxxxxxxxxx
-Response:
-
-.. code-block:: json
-
-{
-    "status": 0,
-    "message": "success",
-    "data": {
-        "m": {
-        "hash": "000000000000002056c37f7d57864341be0cc01b79c7dfb68350abd831bb50d7",
-        "confirmations": 2,
-        "size": 10940,
-        "height": 1158713,
-        "version": 536870912,
-        "versionHex": "20000000",
-        "merkleroot": "a9ea98c84ce1d538c332e65d1db9de65f7cdb80783a0e0121097993073e60bac",
-        "tx": [
-            "11f15873f50e55de555729d76dd3d9189cfda6042a3807bb3a0529f80722dac2",
-            "4bf438829fe339265f704f3eb62f32ca6db78faa6663a58736a9fa750dc4c022",
-            "02a053ca2fcc6c5be98b5701608c6d3ce1f3363ae24cadde189c49293285045d",
-            "14e2099bc5e173aee2e18cfdbc228edb850e1181aec7260668b8416815367835",
-            "ff624e5970c4716d6d1b78b39ae50edc46fe0c66bb6038a6fe5a05dd4791ebdc",
-            "db3c3406a8ec947e21bb56f243e5eb4ffa28adf9be8a6adff06a8cb044d6dca6",
-            "e7b6c39a1a178eb8889cbfab8001dbc167e03b49be2e7fbd8a5320b2d3a61de2",
-            "64aeaacbcbb9fb6842bc80144e19ccbfaa49b7ca1e438c4c35023376a4768a1b",
-            "add2bff452a81710b46cd269d49a21506437c8959409b0f6861664263b19baf8"
-        ],
-        "cbTx": {
-            "version": 2,
-            "height": 1158713,
-            "merkleRootMNList": "2ef31ada7aa72d5f5215fbd978c47f4ee7b68d293ce68d3b1b2a84fcbc777bc9",
-            "merkleRootQuorums": "812ff025ba417a6deb37fc1e0e5f35678665202e09db7e2a31d0b67ce181d187"
-        },
-        "time": 1571814866,
-        "mediantime": 1571814640,
-        "nonce": 3600838889,
-        "bits": "19240c41",
-        "difficulty": 119144408.2195601,
-        "chainwork": "000000000000000000000000000000000000000000001f71b3ca52972d74626f",
-        "previousblockhash": "00000000000000175d2d0a1c8c4b081b745e066d235af284eea184285cc68297",
-        "nextblockhash": "00000000000000074ce217b129e141632aaa9d2b93a400d3137243d361bf4139",
-        "chainlock": true
-        }
-    }
- }
-
-getBlockByHeight
-```````````
-Get the block of the specified hash according to the block height
-
-Return:
-
-.. code-block:: json
-
- {
-    "hash" : "hash",     (string) the block hash (same as provided)
-    "confirmations" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain
-    "size" : n,            (numeric) The block size
-    "height" : n,          (numeric) The block height or index
-    "version" : n,         (numeric) The block version
-    "versionHex" : "00000000", (string) The block version formatted in hexadecimal
-    "merkleroot" : "xxxx", (string) The merkle root
-    "tx" : [               (array of string) The transaction ids
-        "transactionid"     (string) The transaction id
-        ,...
-    ],
-    "time" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)
-    "mediantime" : ttt,    (numeric) The median block time in seconds since epoch (Jan 1 1970 GMT)
-    "nonce" : n,           (numeric) The nonce
-    "bits" : "1d00ffff", (string) The bits
-    "difficulty" : x.xxx,  (numeric) The difficulty
-    "chainwork" : "xxxx",  (string) Expected number of hashes required to produce the chain up to this block (in hex)
-    "nTx" : n,             (numeric) The number of transactions in the block.
-    "previousblockhash" : "hash",  (string) The hash of the previous block
-    "nextblockhash" : "hash"       (string) The hash of the next block
-    }
-
-Definition::
-
-    GET /dash/getBlockByHeight?height={height}   //height (Integer)
-Example Request::
-
-    GET /dash/getBlockByHeight?height=1158713
-
-Response:
-
-.. code-block:: json
-
- {
-  "status": 0,
-  "message": "success",
-  "data": {
-        "m": {
-                "hex": "01000000011db3632af8f48b2ca6dfd21b410ad05129cf32762d586abd6dfef656727536ba010000006b483045022100a86acc0ca389f849ad52f3154dc5d43333ebe2f4163c71b4ac2de30b4dc49b1d022017b0ba9af85150ceedb109e0c0b78d49b843aa6bbfd41cf75626dd94a401bab301210389c9b2ba32f648e3756b3f58a64c462fbccd56d4e48ada71a7224eedeae0e43cfeffffff02408af701000000001976a914916853b469ae7ad8e9d66bb892c336899b615d5788ac70cf0b00000000001976a914c6e8b9d49ff49c751dab2689cfdf0dfb8c9537e488ac00000000",
-            rnal": false,
-            "chainlock": true
-                }"txid": "0e6d444bf4de1773cf4f27834f362bec825af55dea7de267e13484f4e023462c",
-            "size": 226,
-            "version": 1,
-            "type": 0,
-            "locktime": 0,
-            "vin": [
-                {
-                "txid": "ba36757256f6fe6dbd6a582d7632cf2951d00a411bd2dfa62c8bf4f82a63b31d",
-                "vout": 1,
-                "scriptSig": {
-                    "asm": "3045022100a86acc0ca389f849ad52f3154dc5d43333ebe2f4163c71b4ac2de30b4dc49b1d022017b0ba9af85150ceedb109e0c0b78d49b843aa6bbfd41cf75626dd94a401bab3[ALL] 0389c9b2ba32f648e3756b3f58a64c462fbccd56d4e48ada71a7224eedeae0e43c",
-                    "hex": "483045022100a86acc0ca389f849ad52f3154dc5d43333ebe2f4163c71b4ac2de30b4dc49b1d022017b0ba9af85150ceedb109e0c0b78d49b843aa6bbfd41cf75626dd94a401bab301210389c9b2ba32f648e3756b3f58a64c462fbccd56d4e48ada71a7224eedeae0e43c"
-                },
-                "sequence": 4294967294
-                }
-            ],
-            "vout": [
-                {
-                "value": 0.33000000,
-                "valueSat": 33000000,
-                "n": 0,
-                "scriptPubKey": {
-                    "asm": "OP_DUP OP_HASH160 916853b469ae7ad8e9d66bb892c336899b615d57 OP_EQUALVERIFY OP_CHECKSIG",
-                    "hex": "76a914916853b469ae7ad8e9d66bb892c336899b615d5788ac",
-                    "reqSigs": 1,
-                    "type": "pubkeyhash",
-                    "addresses": [
-                    "XowgnqKdQtCvZdztRXp7kFFmMxaGRh4thK"
-                    ]
-                }
-                },
-                {
-                "value": 0.00774000,
-                "valueSat": 774000,
-                "n": 1,
-                "scriptPubKey": {
-                    "asm": "OP_DUP OP_HASH160 c6e8b9d49ff49c751dab2689cfdf0dfb8c9537e4 OP_EQUALVERIFY OP_CHECKSIG",
-                    "hex": "76a914c6e8b9d49ff49c751dab2689cfdf0dfb8c9537e488ac",
-                    "reqSigs": 1,
-                    "type": "pubkeyhash",
-                    "addresses": [
-                    "XtpaRKDiZdJBw5xaZGLYSTMXxNXcfieMRx"
-                    ]
-                }
-                }
-            ],
-            "blockhash": "000000000000001a703370075ee3b97fd7fec42adda86b159d60d30ba1ebe645",
-            "height": 1142826,
-            "confirmations": 15898,
-            "time": 1569310357,
-            "blocktime": 1569310357,
-            "instantlock": true,
-            "instantlock_inte
-  }
- }
- 
 
 decodeRawTransaction
 ```````````
