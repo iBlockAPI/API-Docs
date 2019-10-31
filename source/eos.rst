@@ -11,7 +11,7 @@ Definition::
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eos/get_info'
+    GET /eos/get_info
 
 Response:
 
@@ -42,11 +42,11 @@ Returns an object containing various details about a specific block on the block
 
 Definition::
 
-    GET /eos/get_block
+    GET /eos/get_block?block_num_or_id={block_num_or_id}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eos/get_block?block_num_or_id=1'
+    GET /eos/get_block?block_num_or_id=1
 
 Response:
 
@@ -81,11 +81,11 @@ Returns an object containing various details about a specific block on the block
 
 Definition::
 
-    GET /eos/get_account
+    GET /eos/get_account?account_name={account_name}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eos/get_account?account_name=binancecold1'
+    GET /eos/get_account?account_name=binancecold1
 
 Response:
 
@@ -165,11 +165,11 @@ Returns an object containing various details about transaction on the blockchain
 
 Definition::
 
-    GET /eos/get_transaction
+    GET /eos/get_transaction?id={id}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eos/get_transaction?id=4B26B91CDF86777655D50129772472D211ACD752508036843FB52AC028B2CB1C'
+    GET /eos/get_transaction?id=4B26B91CDF86777655D50129772472D211ACD752508036843FB52AC028B2CB1C
 
 Response:
 
@@ -386,11 +386,11 @@ Returns an object containing rows from the specified table.
 
 Definition::
 
-    GET /eos/get_currency_balance
+    GET /eos/get_currency_balance?code={code}&account_name={account_name}&symbol={symbol}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eos/get_currency_balance?code=eosio.token&account_name=binancecold1&symbol=EOS'
+    GET /eos/get_currency_balance?code=eosio.token&account_name=binancecold1&symbol=EOS
 
 Response:
 
