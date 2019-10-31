@@ -7,11 +7,11 @@ Returns the receipt of a transaction by transaction hash.
 
 Definition::
 
-    GET /eth/ethGetTransactionReceipt?txHash=0x2fd36a4d0ac98e2c01ed3669835927cb1a18375d8bf97e09ac2f4cc287687743
+    GET /eth/ethGetTransactionReceipt?txHash={txHash}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eth/ethGetTransactionReceipt?txHash=0x2fd36a4d0ac98e2c01ed3669835927cb1a18375d8bf97e09ac2f4cc287687743'
+    GET /eth/ethGetTransactionReceipt?txHash=0x2fd36a4d0ac98e2c01ed3669835927cb1a18375d8bf97e09ac2f4cc287687743
 
 Response:
 
@@ -49,11 +49,11 @@ Returns the information about a transaction requested by transaction hash.
 
 Definition::
 
-    GET /eth/ethGetTransactionByHash?txHash=0x2fd36a4d0ac98e2c01ed3669835927cb1a18375d8bf97e09ac2f4cc287687743
+    GET /eth/ethGetTransactionByHash?txHash={txHash}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eth/ethGetTransactionByHash?txHash=0x2fd36a4d0ac98e2c01ed3669835927cb1a18375d8bf97e09ac2f4cc287687743'
+    GET /eth/ethGetTransactionByHash?txHash=0x2fd36a4d0ac98e2c01ed3669835927cb1a18375d8bf97e09ac2f4cc287687743
 
 Response:
 
@@ -128,11 +128,11 @@ Returns information about a block by hash.
 
 Definition::
 
-    GET /eth/ethGetBlockByHash?txHash=0x9de9fa4172199ad230af553ac26ffa6b10f2d896d61a5e71f3f30dea5da62d65
+    GET /eth/ethGetBlockByHash?txHash={txHash}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eth/ethGetBlockByHash?txHash=0x9de9fa4172199ad230af553ac26ffa6b10f2d896d61a5e71f3f30dea5da62d65'
+    GET /eth/ethGetBlockByHash?txHash=0x9de9fa4172199ad230af553ac26ffa6b10f2d896d61a5e71f3f30dea5da62d65'
 
 Response:
 
@@ -233,11 +233,11 @@ Returns information about a block by block number.
 
 Definition::
 
-    GET /eth/ethGetBlockByNumber?number=8795764
+    GET /eth/ethGetBlockByNumber?number={number}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eth/ethGetBlockByNumber?number=8795764'
+    GET /eth/ethGetBlockByNumber?number=8795764
 
 Response:
 
@@ -338,11 +338,11 @@ Returns the balance(integer of the current balance in wei.) of the account of gi
 
 Definition::
 
-    GET /eth/ethGetBalance?address=0xea674fdde714fd979de3edf0f56aa9716b898ec8
+    GET /eth/ethGetBalance?address={address}
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eth/ethGetBalance?address=0xea674fdde714fd979de3edf0f56aa9716b898ec8'
+    GET /eth/ethGetBalance?address=0xea674fdde714fd979de3edf0f56aa9716b898ec8
 
 Response:
 
@@ -365,7 +365,7 @@ Definition::
     
 Example Request::
 
-    curl -X GET --header 'Accept: application/json' 'http://localhost:8080/eth/ethBlockNumber'
+    GET /eth/ethBlockNumber
 
 Response:
 
