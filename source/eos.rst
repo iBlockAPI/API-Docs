@@ -403,3 +403,69 @@ Response:
       "2.9626 EOS"
     ]
   }
+
+hasContract
+`````````````````
+Check if the address is a contract account
+
+Definition::
+
+    GET /eos/hasContract?address={address}
+    
+Example Request::
+
+    GET /eos/hasContract?address=test11111111
+
+Response:
+
+.. code-block:: json
+
+  {
+    "status": 0,
+    "message": "success",
+    "data": false
+  }
+
+eosSign
+`````````````````
+Sign the data with the private key
+
+Definition::
+
+    GET /eos/eosSign?data={data}&privateKey={privateKey}
+    
+Example Request::
+
+    GET /eos/eosSign?data=123123123123123&privateKey=5J3yf2qU69i2CX8JQaPwM5PtvJ41bB1Dc7rRqFafzxjrW2wxvV6
+
+Response:
+
+.. code-block:: json
+
+  {
+    "status": 0,
+    "message": "success",
+    "data": "SIG_K1_K9NP9aggyTJexCvr6Jz3bDvPC1kjyLb9AhU79nP4XLqHdX9Ep7xfZFNEMCj1y1DU8z3qqQUmRUkeYErXmhHN9bNNTpS5of"
+  }
+
+eosVerifySign
+`````````````````
+Verify the signed data using the public key
+
+Definition::
+
+    GET /eos/eosVerifySign?data={data}&signature={signature}&publicKey={publicKey}
+    
+Example Request::
+
+    GET /eos/eosVerifySign?data=123123123123123&signature=SIG_K1_K9NP9aggyTJexCvr6Jz3bDvPC1kjyLb9AhU79nP4XLqHdX9Ep7xfZFNEMCj1y1DU8z3qqQUmRUkeYErXmhHN9bNNTpS5of&publicKey=EOS8Q84bT1Luyk32z6NKrnpjwstN9DKmNvo8gt9om4X15Ky2p2Bik
+
+Response:
+
+.. code-block:: json
+
+  {
+    "status": 0,
+    "message": "success",
+    "data": true
+  }
