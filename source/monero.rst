@@ -139,9 +139,6 @@ getBlockHeaderByHash
 Block header information can be retrieved using either a block's hash or height. 
 This method includes a block's hash as an input parameter to retrieve basic information about the block
 
-Return:
-
-See getLastBlockHeader method
 
 Definition::
 
@@ -199,9 +196,6 @@ getBlockHeaderByHeight
 ```````````
 Similar to get_block_header_by_hash above, this method includes a block's height as an input parameter to retrieve basic information about the block
 
-Return:
-
-See getLastBlockHeader method
 
 Definition::
 
@@ -260,9 +254,6 @@ getBlockHeadersRange
 Similar to get_block_header_by_height above, but for a range of blocks,
 This method includes a starting block height and an ending block height as parameters to retrieve basic information about the range of blocks.
 
-Return:
-
-See getLastBlockHeader method
 
 Definition::
 
@@ -343,9 +334,6 @@ getBlockByHeight
 ```````````
 Full block information can be retrieved by block height
 
-Return:
-
-See getLastBlockHeader method
 
 Definition::
 
@@ -405,9 +393,6 @@ getBlockByHash
 ```````````
 Full block information can be retrieved by block hash
 
-Return:
-
-See getLastBlockHeader method
 
 Definition::
 
