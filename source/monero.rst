@@ -60,28 +60,6 @@ getLastBlockHeader
 ```````````
 Block header information for the most recent block is easily retrieved with this method
 
-Return:
-
-.. code-block:: json
-
- {
-    block_header - A structure containing block header information.
-        block_size - unsigned int; The block size in bytes.
-        depth - unsigned int; The number of blocks succeeding this block on the blockchain. A larger number means an older block.
-        difficulty - unsigned int; The strength of the Monero network based on mining power.
-        hash - string; The hash of this block.
-        height - unsigned int; The number of blocks preceding this block on the blockchain.
-        major_version - unsigned int; The major version of the monero protocol at this block height.
-        minor_version - unsigned int; The minor version of the monero protocol at this block height.
-        nonce - unsigned int; a cryptographic random one-time number used in mining a Monero block.
-        num_txes - unsigned int; Number of transactions in the block, not counting the coinbase tx.
-        orphan_status - boolean; Usually false. If true, this block is not part of the longest chain.
-        prev_hash - string; The hash of the block immediately preceding this block in the chain.
-        reward - unsigned int; The amount of new atomic units generated in this block and rewarded to the miner. Note: 1 XMR = 1e12 atomic units.
-        timestamp - unsigned int; The unix time at which the block was recorded into the blockchain.
-    status - string; General RPC error code. "OK" means everything looks good.
-    untrusted - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (true), or when the daemon is fully synced (false).
- }
 Definition::
 
     GET /xmr/getLastBlockHeader/
@@ -131,6 +109,29 @@ Response:
     }
  }
 
+
+Return:
+
+.. code-block:: json
+
+ {
+    block_header - A structure containing block header information.
+        block_size - unsigned int; The block size in bytes.
+        depth - unsigned int; The number of blocks succeeding this block on the blockchain. A larger number means an older block.
+        difficulty - unsigned int; The strength of the Monero network based on mining power.
+        hash - string; The hash of this block.
+        height - unsigned int; The number of blocks preceding this block on the blockchain.
+        major_version - unsigned int; The major version of the monero protocol at this block height.
+        minor_version - unsigned int; The minor version of the monero protocol at this block height.
+        nonce - unsigned int; a cryptographic random one-time number used in mining a Monero block.
+        num_txes - unsigned int; Number of transactions in the block, not counting the coinbase tx.
+        orphan_status - boolean; Usually false. If true, this block is not part of the longest chain.
+        prev_hash - string; The hash of the block immediately preceding this block in the chain.
+        reward - unsigned int; The amount of new atomic units generated in this block and rewarded to the miner. Note: 1 XMR = 1e12 atomic units.
+        timestamp - unsigned int; The unix time at which the block was recorded into the blockchain.
+    status - string; General RPC error code. "OK" means everything looks good.
+    untrusted - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (true), or when the daemon is fully synced (false).
+ }
 
 
 
@@ -523,38 +524,6 @@ getTransactions
 ```````````
 Look up one or more transactions by hash
 
-Return:
-
-.. code-block:: json
-
- {
-    missed_tx - array of strings. (Optional - returned if not empty) Transaction hashes that could not be found.
-    status - General RPC error code. "OK" means everything looks good.
-    txs - array of structure entry as follows:
-    as_hex - string; Full transaction information as a hex string.
-    as_json - json string; List of transaction info:
-    version - Transaction version
-    unlock_time - If not 0, this tells when a transaction output is spendable.
-    vin - List of inputs into transaction:
-    key - The public key of the previous output spent in this transaction.
-    amount - The amount of the input, in atomic units.
-    key_offsets - A list of integer offets to the input.
-    k_image - The key image for the given input
-    vout - List of outputs from transaction:
-    amount - Amount of transaction output, in atomic units.
-    target - Output destination information:
-    key - The stealth public key of the receiver. Whoever owns the private key associated with this key controls this transaction output.
-    extra - Usually called the "payment ID" but can be used to include any random 32 bytes.
-    signatures - List of signatures used in ring signature to hide the true origin of the transaction.
-    block_height - unsigned int; block height including the transaction
-    block_timestamp - unsigned int; Unix time at chich the block has been added to the blockchain
-    double_spend_seen - boolean; States if the transaction is a double-spend (true) or not (false)
-    in_pool - boolean; States if the transaction is in pool (true) or included in a block (false)
-    output_indices - array of unsigned int; transaction indexes
-    tx_hash - string; transaction hash
-    txs_as_hex - string; Full transaction information as a hex string (old compatibility parameter)
- }
-
 Definition::
 
     GET /xmr/getTransactionsgetTransactions?{tx_hash}&decodeAsJson=true
@@ -585,6 +554,38 @@ Response:
         "txs_as_hex": ["..."],
         "untrusted": false
     }
+ }
+
+Return:
+
+.. code-block:: json
+
+ {
+    missed_tx - array of strings. (Optional - returned if not empty) Transaction hashes that could not be found.
+    status - General RPC error code. "OK" means everything looks good.
+    txs - array of structure entry as follows:
+    as_hex - string; Full transaction information as a hex string.
+    as_json - json string; List of transaction info:
+    version - Transaction version
+    unlock_time - If not 0, this tells when a transaction output is spendable.
+    vin - List of inputs into transaction:
+    key - The public key of the previous output spent in this transaction.
+    amount - The amount of the input, in atomic units.
+    key_offsets - A list of integer offets to the input.
+    k_image - The key image for the given input
+    vout - List of outputs from transaction:
+    amount - Amount of transaction output, in atomic units.
+    target - Output destination information:
+    key - The stealth public key of the receiver. Whoever owns the private key associated with this key controls this transaction output.
+    extra - Usually called the "payment ID" but can be used to include any random 32 bytes.
+    signatures - List of signatures used in ring signature to hide the true origin of the transaction.
+    block_height - unsigned int; block height including the transaction
+    block_timestamp - unsigned int; Unix time at chich the block has been added to the blockchain
+    double_spend_seen - boolean; States if the transaction is a double-spend (true) or not (false)
+    in_pool - boolean; States if the transaction is in pool (true) or included in a block (false)
+    output_indices - array of unsigned int; transaction indexes
+    tx_hash - string; transaction hash
+    txs_as_hex - string; Full transaction information as a hex string (old compatibility parameter)
  }
 
 
