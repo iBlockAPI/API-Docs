@@ -24,7 +24,7 @@ Response:
 
 getBlockByHash
 ```````````
-Get the block of the specified hash according to the block hash
+Get the block of the specified hash according to the block hash.
 
 Definition::
 
@@ -102,7 +102,7 @@ Return:
 
 getBlockByHeight
 ```````````
-Get the block of the specified hash according to the block height
+Get the block of the specified hash according to the block height.
 
 Definition::
 
@@ -115,39 +115,40 @@ Response:
 
 .. code-block:: json
 
- {
-    "status": 0,
-    "message": "success",
-    "data": {
-        "m": {
-        "hash": "00000000000000000009ebd5b872ca8f18255889ee5629a0b764a25e3659b326",
-        "confirmations": 1,
-        "strippedsize": 925588,
-        "size": 1216432,
-        "weight": 3993196,
-        "height": 600618,
-        "version": 536870912,
-        "versionHex": "20000000",
-        "merkleroot": "4b4ed5dfe5c8f72fdbced9e9820ab733c703f5aac0cf9c8a18b2c02ef4c3b5bc",
-        "tx": [
-            "1725e9081e028d1285c5415d9530c23dafdca4ba0e6496ca5059a7113aa97486",
-            "b47794c66971a770749e90d49f543f840e9c6cf54b2f75707aee3ff0725cdc34",
-            "d9880f19a4a53509de2bda8e87183f0d937af9faf932f84432ce35fbd68122ac",
-            "8540e966fae4e793bd7a6ff4fd41f6be280a04625e4539dfcc728c4b370ae111",
+     {
+        "status": 0,
+        "message": "success",
+        "data": {
+            "m": {
+                "hash": "00000000000000000009ebd5b872ca8f18255889ee5629a0b764a25e3659b326",
+                "confirmations": 1,
+                "strippedsize": 925588,
+                "size": 1216432,
+                "weight": 3993196,
+                "height": 600618,
+                "version": 536870912,
+                "versionHex": "20000000",
+                "merkleroot": "4b4ed5dfe5c8f72fdbced9e9820ab733c703f5aac0cf9c8a18b2c02ef4c3b5bc",
+                "tx": [
+                    "1725e9081e028d1285c5415d9530c23dafdca4ba0e6496ca5059a7113aa97486",
+                    "b47794c66971a770749e90d49f543f840e9c6cf54b2f75707aee3ff0725cdc34",
+                    "d9880f19a4a53509de2bda8e87183f0d937af9faf932f84432ce35fbd68122ac",
+                    "8540e966fae4e793bd7a6ff4fd41f6be280a04625e4539dfcc728c4b370ae111",
 
                 ],
-        "time": 1571793551,
-    "mediantime": 1571787998,
-    "nonce": 3590812334,
-    "bits": "1715a35c",
-    "difficulty": 13008091666971.9,
-    "chainwork": "0000000000000000000000000000000000000000097eb7a6a9b150bb52f83e19",
-    "nTx": 3257,
-    "previousblockhash": "00000000000000000010ff158c5126b37bfa453f04077750b527448416d39436",
-    "nextblockhash": "00000000000000000007315593295701d0892e5bad63936b72aed708ff366f84"
+                "time": 1571793551,
+                "mediantime": 1571787998,
+                "nonce": 3590812334,
+                "bits": "1715a35c",
+                "difficulty": 13008091666971.9,
+                "chainwork": "0000000000000000000000000000000000000000097eb7a6a9b150bb52f83e19",
+                "nTx": 3257,
+                "previousblockhash": "00000000000000000010ff158c5126b37bfa453f04077750b527448416d39436",
+                "nextblockhash": "00000000000000000007315593295701d0892e5bad63936b72aed708ff366f84"
+            }
+        }
     }
-    }
- }
+
 
 
 
@@ -182,7 +183,7 @@ Return:
 
 getBlockChainInfo
 ```````````
-Returns an object containing various state info regarding blockchain processing
+Returns an object containing various state info regarding blockchain processing.
 
 Definition::
 
@@ -303,7 +304,7 @@ Return:
 
 getBlockCount
 ```````````
-Returns the number of blocks in the longest blockchain
+Returns the number of blocks in the longest blockchain.
 
 Definition::
 
@@ -324,7 +325,7 @@ Response:
 
 getBlockHash
 ```````````
-Returns hash of block in best-block-chain at height provided
+Returns hash of block in best-block-chain at height provided.
 
 Definition::
 
@@ -345,7 +346,7 @@ Response:
 
 getDifficulty
 ```````````
-Returns the proof-of-work difficulty as a multiple of the minimum difficulty
+Returns the proof-of-work difficulty as a multiple of the minimum difficulty.
 
 Definition::
 
@@ -367,9 +368,9 @@ Response:
 
 getRawMemPool
 ```````````
-Returns all transaction ids in memory pool as a json array of string transaction ids
+Returns all transaction ids in memory pool as a json array of string transaction ids.
 
-Hint: use getmempoolentry to fetch a specific transaction from the mempool
+Hint: use getmempoolentry to fetch a specific transaction from the mempool.
 
 Definition::
 
@@ -398,7 +399,7 @@ Response:
 
 gettxout
 ```````````
-Returns details about an unspent transaction output
+Returns details about an unspent transaction output.
 
 Params:
 
@@ -466,7 +467,7 @@ Result:
 
 getTxOutSetInfo
 ```````````
-Returns statistics about the unspent transaction output set,Note this call may take some time
+Returns statistics about the unspent transaction output set,Note this call may take some time.
 
 
 Definition::
@@ -537,12 +538,12 @@ Response:
 
 verifyChainByParam
 ```````````
-Verifies blockchain database
+Verifies blockchain database.
 
 Params:
-1. checklevel   (numeric, optional, 0-4, default=3) How thorough the block verification is
+1. checklevel   (numeric, optional, 0-4, default=3) How thorough the block verification is.
 
-2. nblocks      (numeric, optional, default=6, 0=all) The number of blocks to check
+2. nblocks      (numeric, optional, default=6, 0=all) The number of blocks to check.
 
 Definition::
 
@@ -567,7 +568,7 @@ Response:
 createMultiSig
 ```````````
 Creates a multi-signature address with n signature of m keys required,
-It returns a json object with the address and redeemScript
+It returns a json object with the address and redeemScript.
 
 Note this call may take some time
 
@@ -615,7 +616,7 @@ estimateSmartFee
 Estimates the approximate fee per kilobyte needed for a transaction to begin
 confirmation within conf_target blocks if possible and return the number of blocks
 for which the estimate is valid. Uses virtual transaction size as defined
-in BIP 141 (witness data is discounted)
+in BIP 141 (witness data is discounted).
 
 Definition::
 
@@ -653,7 +654,7 @@ Result:
 
 validateAddress
 ```````````
-Return information about the given bitcoin address
+Return information about the given bitcoin address.
 
 Definition::
 
@@ -676,15 +677,15 @@ Response:
 
 verifyMessage
 ```````````
-Verify a signed message
+Verify a signed message.
 
 Params
 
-1. "address"         (string, required) The bitcoin address to use for the signature
+1. "address"         (string, required) The bitcoin address to use for the signature.
 
-2. "signature"       (string, required) The signature provided by the signer in base 64 encoding (see signmessage)
+2. "signature"       (string, required) The signature provided by the signer in base 64 encoding (see signmessage).
 
-3. "message"         (string, required) The message that was signed
+3. "message"         (string, required) The message that was signed.
 
 
 Definition::
@@ -708,7 +709,7 @@ Response:
 
 queryTransactionInfo
 ```````````
-Query transaction information according to txid
+Query transaction information according to txid.
 
 Definition::
 
@@ -840,8 +841,6 @@ decodeRawTransaction
 ```````````
 Return a JSON object representing the serialized, hex-encoded transaction.
 
-Also see createrawtransaction and signrawtransaction calls
-
 Definition::
 
     GET /btc/decodeRawTransaction?hex={hex}
@@ -853,48 +852,49 @@ Response:
 
 .. code-block:: json
 
- {
-  "status": 0,
-  "message": "success",
- "data": {
-       {
-  "txid" : "id",        (string) The transaction id
-  "hash" : "id",        (string) The transaction hash (differs from txid for witness transactions)
-  "size" : n,             (numeric) The transaction size
-  "vsize" : n,            (numeric) The virtual transaction size (differs from size for witness transactions)
-  "weight" : n,           (numeric) The transaction's weight (between vsize*4 - 3 and vsize*4)
-  "version" : n,          (numeric) The version
-  "locktime" : ttt,       (numeric) The lock time
-  "vin" : [               (array of json objects)
      {
-       "txid": "id",    (string) The transaction id
-       "vout": n,         (numeric) The output number
-       "scriptSig": {     (json object) The script
-         "asm": "asm",  (string) asm
-         "hex": "hex"   (string) hex
-       },
-       "txinwitness": ["hex", ...] (array of string) hex-encoded witness data (if any)
-       "sequence": n     (numeric) The script sequence number
-     }
-     ,...
-  ],
-  "vout" : [             (array of json objects)
-     {
-       "value" : x.xxx,            (numeric) The value in BTC
-       "n" : n,                    (numeric) index
-       "scriptPubKey" : {          (json object)
-         "asm" : "asm",          (string) the asm
-         "hex" : "hex",          (string) the hex
-         "reqSigs" : n,            (numeric) The required sigs
-         "type" : "pubkeyhash",  (string) The type, eg 'pubkeyhash'
-         "addresses" : [           (json array of string)
-           "12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc"   (string) BTC address
-         ]
-       }
-     }
-     ,...
-  ],
+        "status": 0,
+        "message": "success",
+        "data": 
+        {
+            {
+                "txid" : "id",        (string) The transaction id
+                "hash" : "id",        (string) The transaction hash (differs from txid for witness transactions)
+                "size" : n,             (numeric) The transaction size
+                "vsize" : n,            (numeric) The virtual transaction size (differs from size for witness transactions)
+                "weight" : n,           (numeric) The transaction's weight (between vsize*4 - 3 and vsize*4)
+                "version" : n,          (numeric) The version
+                "locktime" : ttt,       (numeric) The lock time
+                "vin" : [               (array of json objects)
+                     {
+                       "txid": "id",    (string) The transaction id
+                       "vout": n,       (numeric) The output number
+                       "scriptSig": {   (json object) The script
+                         "asm": "asm",  (string) asm
+                         "hex": "hex"   (string) hex
+                       },
+                       "txinwitness": ["hex", ...] (array of string) hex-encoded witness data (if any)
+                       "sequence": n     (numeric) The script sequence number
+                     }
+                    ,...
+                ],
+                "vout" : [             (array of json objects)
+                    {
+                        "value" : x.xxx,            (numeric) The value in BTC
+                        "n" : n,                    (numeric) index
+                        "scriptPubKey" : {          (json object)
+                        "asm" : "asm",          (string) the asm
+                        "hex" : "hex",          (string) the hex
+                        "reqSigs" : n,            (numeric) The required sigs
+                        "type" : "pubkeyhash",  (string) The type, eg 'pubkeyhash'
+                        "addresses" : [           (json array of string)
+                            "12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc"   (string) BTC address
+                            ]
+                        }
+                     }
+                     ,...
+                ],
+            }
+        }
     }
-  }
- }
 
