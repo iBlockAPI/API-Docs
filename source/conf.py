@@ -17,7 +17,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'iBlockAPI-Docs-EN <"https://iblockapi.com">'
+project = `BlockAPI-Docs-EN <https://iblockapi.com/>`_
 copyright = '2019'
 author = 'iBlockAPI'
 
