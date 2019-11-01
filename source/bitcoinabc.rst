@@ -609,7 +609,8 @@ Result:
 Definition::
 
     GET /bch/createMultiSig?nRequired={nRequired}&keys={nRequired}
-Example Request:
+    
+Example Request::
 
     GET /bch/createMultiSig?nRequired=6&keys=xxxxxxxxxxxxxxxxx
 
@@ -815,13 +816,9 @@ Also see createrawtransaction and signrawtransaction calls
 
 Definition::
 
-.. code-block:: bash:
-
-    GET /bch/decodeRawTransaction?hex={hex}
+  GET /bch/decodeRawTransaction?hex={hex}
 
 Example Request:
-
-.. code-block:: bash:
 
     GET /bch/decodeRawTransaction?hex=xxxxxxxxxx
 
