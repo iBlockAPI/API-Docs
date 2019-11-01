@@ -609,7 +609,7 @@ Result:
 Definition::
 
     GET /bch/createMultiSig?nRequired={nRequired}&keys={nRequired}
-    
+
 Example Request::
 
     GET /bch/createMultiSig?nRequired=6&keys=xxxxxxxxxxxxxxxxx
@@ -818,7 +818,7 @@ Definition::
 
   GET /bch/decodeRawTransaction?hex={hex}
 
-Example Request:
+Example Request::
 
     GET /bch/decodeRawTransaction?hex=xxxxxxxxxx
 
