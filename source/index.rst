@@ -10,21 +10,27 @@ Rest API
     
   The REST API allows you to query block info.
 
-- Base URL
+Base URL
+`````````````````
+All REST APIs in the documentation have the following base URL:
 
-  All REST APIs in the documentation have the following base URL:
+    https://api.iblockapi.com/
 
-  .. code-block:: bash
+Basic Authentication
+``````````````````````
+The HTTP requests to the REST API are protected with authentication. You can apply for APIKey in Dashboard, using apiKey to authenticate.  
+For example:
 
-      https://api.iblockapi.com/
+.. code-block:: bash
 
-- Authentication
+    curl -H 'apiKey: your api Key' "https://api.iblockapi.com/btc/queryTransactionInfo?txId=6f54fcaec5553af2284da5917f52be3a82295531508886a254ff767a36ae73cd"
 
-  The HTTP requests to the REST API are protected with authentication. You can create an application in Dashboard, using apiKey to authenticate.  For example:
 
-  .. code-block:: bash
+OR
 
-      curl  https://api.iblockapi.com?apiKey="Your APIKey"
+.. code-block:: bash
+
+    curl "https://api.iblockapi.com/btc/queryTransactionInfo?txId=6f54fcaec5553af2284da5917f52be3a82295531508886a254ff767a36ae73cd&apiKey=your api key"
 
 .. toctree::
    :maxdepth: 2
