@@ -21,7 +21,7 @@ project =  '<a href="https://iblockapi.com"/>iBlockAPI-Docs-EN</a>'
 copyright = '2019'
 author = 'iBlockAPI'
 html_title= "iBlockAPI-Docs-EN"
-html_logo='../img/logo.png'
+#html_logo='../img/logo.png'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
