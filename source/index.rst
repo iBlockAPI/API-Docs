@@ -14,7 +14,7 @@ Base URL
 `````````````````
 All REST APIs in the documentation have the following base URL:
 
-    https://api.iblockapi.com/
+    https://api.iblockapi.com/swagger-ui.html
 
 Basic Authentication
 ``````````````````````
